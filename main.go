@@ -9,9 +9,14 @@ import (
 
 func main() {
 	var r io.Reader
-	r, _ = os.Open("e.html")
+	var e error
+	r, e = os.Open("e.html")
+	if e != nil {
+		panic(e)
+	}
 	li, err := link.Connect(r)
 	if err != nil {
+		fmt.Println("p")
 		panic(err)
 	}
 	for _, a := range li {

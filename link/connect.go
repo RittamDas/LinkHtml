@@ -1,6 +1,7 @@
 package link
 
 import (
+	"fmt"
 	"io"
 	"strings"
 
@@ -15,6 +16,7 @@ type Links struct {
 func Connect(r io.Reader) ([]Links, error) {
 	doc, err := html.Parse(r)
 	if err != nil {
+		fmt.Println("k")
 		return nil, err
 	}
 	return parseLinks(doc), nil
